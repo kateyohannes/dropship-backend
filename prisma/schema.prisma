@@ -26,6 +26,7 @@ model User {
 type Profile {
     firstname String
     lastname  String
+    profilePictureUrl String?
     bod DateTime
     gender Gender
     address  Address[]
