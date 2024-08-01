@@ -3,10 +3,9 @@
     "module": "index.ts",
     "type": "module",
     "scripts": {
-        "server": "bun run --hot src/index.ts",
-        "server:user-api": "bun run --hot src/services/user-api/index.ts"
-    },
-    "devDependencies": {
+        "server": "bun run --hot src/index.ts"
+    }
+  "devDependencies": {
         "@types/bun": "latest"
     },
     "peerDependencies": {
