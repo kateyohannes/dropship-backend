@@ -62,3 +62,5 @@ const usertype = `
         Female
     }
 `
+
+export default usertype;
