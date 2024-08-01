@@ -1,7 +1,8 @@
 
 import { createYoga, createSchema } from "graphql-yoga";
-import {typeDefs} from "./types";
-import {resolvers} from "./resolvers"
+import { typeDefs } from "./types";
+import { resolvers } from "./resolvers"
+import { createContext } from "@config/context";
 
 const schema = createSchema({
     typeDefs,
@@ -10,6 +11,7 @@ const schema = createSchema({
 
 const yoga = createYoga({
     schema,
+    context: createContext,
     landingPage: false,
     cors: false,
     graphqlEndpoint: '/graphql'
@@ -17,19 +19,19 @@ const yoga = createYoga({
 
 const server = {
     hostname: Bun.env.HOST || 'localhost',
-    port : Bun.env.USER_API_PORT || 4001
+    port: Bun.env.USER_API_PORT || 4001
 }
 
 Bun.serve({
     fetch: yoga.fetch,
     port: server.port,
     hostname: server.hostname,
-    development: Bun.env.NODE_ENV !== 'production'? true : false,
+    development: Bun.env.NODE_ENV !== 'production' ? true : false,
 });
 
 console.info(
-  `Server is running on ${new URL(
-    yoga.graphqlEndpoint,
-    `http://${server.hostname}:${server.port}`
-  )}`
+    `Server is running on ${new URL(
+        yoga.graphqlEndpoint,
+        `http://${server.hostname}:${server.port}`
+    )}`
 );

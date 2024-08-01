@@ -1,23 +1,17 @@
+import type { GraphQLContext } from "@config/context"
 
 const userResolvers = {
     Query: {
 
     },
     Mutation: {
-        // registerUser: async (_, { input }) => {
-        //     try{
-        //         return {
-        //             id: '1',
-        //             username: input.username,
-        //             password: input.password,
-        //             isActive: true,
-        //             createdAt: new Date(),
-        //             updatedAt: new Date()
-        //         }
-        //     }catch(err){
+        registerUser: async (parent: unknown, args: {}, context: GraphQLContext) => {
+            try{
+                
+            }catch(err){
 
-        //     }
-        // },
+            }
+        },
         // createProfile: async (_, { input }) => {
         //     // Database operations to create a profile for a user
         //     // Return the newly created profile
