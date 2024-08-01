@@ -1,17 +1,11 @@
 
 import { createYoga, createSchema } from "graphql-yoga";
+import {typeDefs} from "./types";
+import {resolvers} from "./resolvers"
 
 const schema = createSchema({
-    typeDefs: `
-        type Query {
-            hello: String
-        }
-    `,
-    resolvers: {
-        Query: {
-            hello: () => "Hello, world!",
-        }
-    }
+    typeDefs,
+    resolvers
 });
 
 const yoga = createYoga({

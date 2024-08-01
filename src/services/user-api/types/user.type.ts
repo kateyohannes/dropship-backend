@@ -1,6 +1,6 @@
 
-const usertype = `
-    scalar DataTime
+const userTypes = `
+    scalar DateTime
     type User {
         id: ID
         username: String
@@ -17,16 +17,16 @@ const usertype = `
     }
 
     type Address{
-        type String
-        state String?
-        city String?
-        country String?
-        point Point?
+        type: String
+        state: String
+        city: String
+        country: String
+        point: Point
     }
 
     type Point{
-        latitude Float
-        longtude Float
+        latitude: Float
+        longtude: Float
     }
 
     type Profile{
@@ -48,6 +48,20 @@ const usertype = `
         password: String!
     }
 
+
+    input UpdateProfileInput{
+        id: ID!,
+        update: ProfileUpdateInput
+    }
+
+    input ProfileUpdateInput{
+        firstname: String
+    }
+
+    input ProfileInput{
+        firstname: String!
+    }
+
     type Mutation {
         registerUser(input: RegisterUserInput): User
         createProfile(input: ProfileInput): Profile
@@ -63,4 +77,4 @@ const usertype = `
     }
 `
 
-export default usertype;
+export default userTypes;

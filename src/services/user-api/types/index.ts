@@ -1,9 +1,7 @@
 
-import { mergeTypeDefs } from "@graphql-tools/merge"
-import usertype from "./user.type"
 
-const typeDefs = mergeTypeDefs([
-    usertype,
-])
+import userTypes from "./user.type"
 
-export default typeDefs
+export const typeDefs = [
+    userTypes,
+]
