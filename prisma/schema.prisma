@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
     provider = "mongodb"
-    url      = env("mongodb://localhost:27017/dropship")
+    url      = env("DATABASE_URL")
 }
 
 model User {
