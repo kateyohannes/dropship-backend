@@ -13,6 +13,8 @@ const typeTwo = `
         two: String
     }
 `
+
+const typeDefs = [typeOne, typeTwo]
 const resolverOne = {
     Query: {
         one: () => "Hello One!",
@@ -20,9 +22,11 @@ const resolverOne = {
     }
 }
 
+const resolvers = [resolverOne]
+
 const schema = createSchema({
-    typeDefs: [typeOne, typeTwo],
-    resolvers: [resolverOne]
+    typeDefs,
+    resolvers
 });
 
 const yoga = createYoga({
@@ -34,7 +38,7 @@ const yoga = createYoga({
 
 const server = {
     hostname: Bun.env.HOST || 'localhost',
-    port : Bun.env.PORT || 4000
+    port : Bun.env.GATWAY_PORT || 4000
 }
 
 Bun.serve({
