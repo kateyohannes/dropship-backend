@@ -1,18 +1,21 @@
 {
-    "name": "dropship",
-    "module": "index.ts",
-    "type": "module",
-    "scripts": {
-        "server": "bun run --hot src/index.ts"
-    }
+  "name": "dropship",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "server": "bun run --hot src/index.ts",
+    "server:user-api": "bun run --hot src/services/user-api/index.ts"
+  },
   "devDependencies": {
-        "@types/bun": "latest"
-    },
-    "peerDependencies": {
-        "typescript": "^5.0.0"
-    },
-    "dependencies": {
-        "graphql": "^16.9.0",
-        "graphql-yoga": "^5.6.2"
-    }
+    "@prisma/client": "5.17.0",
+    "@types/bun": "latest",
+    "prisma": "5.17.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "graphql": "^16.9.0",
+    "graphql-yoga": "^5.6.2"
+  }
 }
