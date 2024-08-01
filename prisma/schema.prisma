@@ -5,10 +5,46 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "mongodb"
+    url      = env("mongodb://localhost:27017/dropship")
+}
+
+model User {
+    id       String  @id @default(auto()) @map("_id") @db.ObjectId
+    username String?
+    password String?
+    profile Profile?
+    isActive Boolean @default(true)
+    createdAt DateTime @default(now())
+    updateAt DateTime @updatedAt
+}
+
+type Profile {
+    firstname String
+    lastname  String
+    bod DateTime
+    gender Gender
+    address  Address[]
+}
+
+type Address{
+    type String
+    state String?
+    city String?
+    country String?
+    point Point?
+}
+
+type Point{
+    latitude Float
+    longtude Float
+}
+
+enum Gender{
+    Male
+    Female
 }
