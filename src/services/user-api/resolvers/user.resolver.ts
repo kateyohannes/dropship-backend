@@ -2,9 +2,10 @@ import type { GraphQLContext } from "@config/context"
 
 const userResolvers = {
     Query: {
-        user: async (parent: unknown, args: { id: number }, context: GraphQLContext) => {
+        user: async (parent: unknown, args: { id: string }, context: GraphQLContext) => {
             try{
-                const data = await context.prisma.user.findFirstOrThrow({
+                
+                const data = await context.prisma.user.findUnique({
                     where: {
                         id: args?.id
                     }
@@ -17,7 +18,10 @@ const userResolvers = {
         userList: async (parent: unknown, args: {}, context: GraphQLContext) => {
             try{
                 const data = await context.prisma.user.findRaw()
-                return data
+                return {
+                    totalCount: data.length,
+                    node: data
+                }
             }catch(err){
                 throw new Error("error occured while userList")
             }
@@ -28,7 +32,9 @@ const userResolvers = {
             try {
                 const body = args.input
                 const data = await context.prisma.user.create({
-                    data: body
+                    data: {
+                        ...body
+                    }
                 })
                 return data
             } catch (err) {
